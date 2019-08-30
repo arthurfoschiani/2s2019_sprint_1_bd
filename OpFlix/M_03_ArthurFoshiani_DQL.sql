@@ -75,3 +75,20 @@ on Lancamento.IdDiretor = Diretor.IdDiretor
 inner join Plataforma
 on Lancamento.IdPlataforma = Plataforma.IdPlataforma
 where Categoria like '%ão'
+
+--buscar a quantidade de Lançamentos
+select count (IdLancamento) from Lancamento
+
+--buscar todas  as categorias mesmo as que não estão vinculadas
+select * from Categoria
+
+--buscar todas  as plataformas mesmo as que não estão vinculadas
+select * from Plataforma order by IdPLataforma asc
+
+--Buscar através da Procedure a quantidade de lançamentos por categoria
+create procedure MostrarMidiasCadatradasPorCategoria @Quantidade varchar (255)
+as 
+select count (IdLancamento) from Lancamento
+where Lancamento.IdCategoria = (select IdCategoria from Categoria where Categoria.Categoria = @Quantidade)
+
+exec MostrarMidiasCadatradasPorCategoria @quantidade = 'Ficção'

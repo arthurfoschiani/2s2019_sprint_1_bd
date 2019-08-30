@@ -25,12 +25,13 @@ create table Lancamento (
 	IdLancamento int primary key identity
 	, IdTipoMidia int foreign key references TipoMidia(IdTipoMidia)
 	, NomeMidia varchar (255) unique not null
-	, Descricao text
+	, Sinopse text
 	, TempoDuracao varchar (255)
 	, IdCategoria int foreign key references Categoria(IdCategoria)
 	, IdDiretor int foreign key references Diretor(IdDiretor)
 	, DataLancamento Date
 	, IdPlataforma int foreign key references Plataforma(IdPlataforma)
+	, Descricao varchar (255)
 );
 create table Usuario (
 	IdUsuario int primary key identity
